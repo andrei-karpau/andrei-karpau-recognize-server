@@ -19,6 +19,8 @@ app.use(
 
 app.use(express.json());
 
+app.use('/user', userRouter);
+
 mongoose
     .connect(
         `${process.env.MONGODB_URL}:${process.env.MONGODB_PORT}/${process.env.MONGODB_PARAMS}`
