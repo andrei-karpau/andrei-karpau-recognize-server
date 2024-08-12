@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
 const userCollection = require('../models/user');
-const JWT_KEY = process.env.JWT_SECRET_KEY;
+const JWT_KEY = process.env.JWT_SECRET;
 
 
 const newUser = async (req, res, next) => {
@@ -105,11 +105,12 @@ const newUser = async (req, res, next) => {
   
     let token;
     try {
-      token = jwt.sign(
-        { userId: existingUser.id, username: existingUser.username },
-        JWT_KEY,
-        { expiresIn: '1h' }
-      );
+      console.log(JWT_KEY);
+      // token = jwt.sign(
+      //   { userId: existingUser.id, username: existingUser.username },
+      //   JWT_KEY,
+      //   { expiresIn: '1h' }
+      // );
     } catch (err) {
       return next(console.log('Logging in failed, please try again', 500));
     }

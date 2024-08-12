@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const recognize = new Schema ({
+const recognizeSchema = new Schema ({
     title: { type: String, required: true },
     completed: { type: Boolean, default: false },
     owner: { type: mongoose.Types.ObjectId, require: true, ref: 'userCollection' },
@@ -11,4 +11,4 @@ const recognize = new Schema ({
     fileName: { type: String, required: false }
 });
 
-module.exports = mongoose.model('Task', taskSchema);
+module.exports = mongoose.model('recognizeCollection', recognizeSchema);
