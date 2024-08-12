@@ -45,7 +45,7 @@ const getQueriesList = async (req, res, next) => {
   let ownerQueries;
 
   try {
-    ownerQueries = await queriesByOwnerId(user.id);
+    ownerQueries = await queriesByOwnerId(owner.id);
   } catch (err) {
     return next(console.log('Get queries list failed, please try again later.', 500));
   }
@@ -93,7 +93,6 @@ const newQuerie = async (req, res, next) => {
   try {
     const session = await mongoose.startSession();
     session.startTransaction();
-    console.log(createdNewQuerie);
     await createdNewQuerie.save();
     await session.commitTransaction();
   } catch (err) {
@@ -103,7 +102,7 @@ const newQuerie = async (req, res, next) => {
   let ownerQueries;
 
   try {
-    ownerQueries = await queriesByOwnerId(user.id);
+    ownerQueries = await queriesByOwnerId(owner.id);
   } catch (err) {
     return next(console.log('Get queries list failed, please try again later.', 500)
     );
@@ -226,7 +225,7 @@ const deleteAllCompleted = async (req, res, next) => {
   let ownerQueries;
 
   try {
-    ownerQueries = await queriesByOwnerId(user.id);
+    ownerQueries = await queriesByOwnerId(owner.id);
   } catch (err) {
     return next(console.log('Get queries list, please try again later.', 500));
   }
