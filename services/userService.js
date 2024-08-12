@@ -106,11 +106,11 @@ const newUser = async (req, res, next) => {
     let token;
     try {
       console.log(JWT_KEY);
-      // token = jwt.sign(
-      //   { userId: existingUser.id, username: existingUser.username },
-      //   JWT_KEY,
-      //   { expiresIn: '1h' }
-      // );
+      token = jwt.sign(
+        { userId: existingUser.id, username: existingUser.username },
+        JWT_KEY,
+        { expiresIn: '1h' }
+      );
     } catch (err) {
       return next(console.log('Logging in failed, please try again', 500));
     }
