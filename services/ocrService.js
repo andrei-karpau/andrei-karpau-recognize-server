@@ -37,7 +37,7 @@ const getQueriesList = async (req, res, next) => {
   let owner;
 
   try {
-    owner = await ownerExist(userId);
+    owner = await ownerExist(ownerId);
   } catch (err) {
     return next(console.log('Cannot find owner specified id.', 404));
   }
