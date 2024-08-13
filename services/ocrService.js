@@ -149,8 +149,8 @@ const updateQuerieStatus = async (req, res, next) => {
 };
 
 const deleteQuerieById = async (req, res, next) => {
-  const { userId } = req.body;
-  const querieId = req.params.tid;
+  const userId = req.body.uid;
+  const querieId = req.params.qid;
 
   let owner;
 
@@ -166,7 +166,7 @@ const deleteQuerieById = async (req, res, next) => {
     const session = await mongoose.startSession();
     session.startTransaction();
     try {
-      querie = await Recognize.findByIdAndDelete({ _id: querie, owner: querie.id });
+      querie = await Recognize.findByIdAndDelete({ _id: querieId, owner: owner.id });
     } catch (err) {
       return next(
         console.log('Cannot delete querie by id.', 500));
