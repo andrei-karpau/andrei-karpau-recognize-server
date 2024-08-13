@@ -12,7 +12,7 @@ const ocrRouter = express.Router();
 
 ocrRouter.get('/:uid', getQueriesList);
 ocrRouter.post('/new', newQuerie);
-ocrRouter.put('/:tid', updateQuerieStatus);
+ocrRouter.put('/:qid', updateQuerieStatus);
 ocrRouter.delete('/:qid', deleteQuerieById);
 ocrRouter.delete('/completed/true', deleteAllCompleted);
 

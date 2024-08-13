@@ -116,24 +116,16 @@ const newQuerie = async (req, res, next) => {
 };
 
 const updateQuerieStatus = async (req, res, next) => {
-  const { completed, userId } = req.body;
-  const querieId = req.params.tid;
 
-  let owner;
-
-  try {
-    owner = await ownerExist(userId);
-  } catch (err) {
-    return next(console.log('Cannot find user specified id.', 404));
-  }
+  const publicId = req.params.qid;
+  const status = req.body.data.status;
 
   let querie;
 
   try {
-    querie = await Recognize.findByIdAndUpdate(
-      { _id: querieId },
-      { completed: completed },
-      { new: true }
+    querie = await Recognize.findOneAndUpdate(
+      { public_id: publicId}, 
+      { status: status }
     );
   } catch (err) {
     return next(console.log('Cannot update status of the specified querie.', 500));
